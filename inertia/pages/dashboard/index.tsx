@@ -3,19 +3,17 @@ import StatCard from './stat_card';
 import { Link } from '@inertiajs/react';
 import { DollarSign, ShoppingBag, Users, Package } from 'lucide-react';
 
-const Dashboard = ({ recentOrders, statistics }: { 
-  recentOrders: any[];
-  statistics: any;
-}) => {
+const Dashboard = ({ announcements, users, shops }: any) => {
+  console.log(announcements?.length)
   return (
     <AdminLayout>
       <div className="max-w-7xl mx-auto">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
-          <StatCard icon={DollarSign} title="Ventes totales" value={statistics.ventes} />
-          <StatCard icon={ShoppingBag} title="Commandes" value={statistics.commandes} />
-          <StatCard icon={Users} title="Clients" value={statistics.clients} />
-          <StatCard icon={Package} title="Produits" value={statistics.produits} />
+          <StatCard icon={DollarSign} title="Nos magasins" value={shops?.length} />
+          <StatCard icon={ShoppingBag} title="Commandes" value={announcements?.length} />
+          <StatCard icon={Users} title="Clients" value={users?.length} />
+          <StatCard icon={Package} title="Produits" value={announcements?.length} />
         </div>
 
         {/* Recent Orders */}

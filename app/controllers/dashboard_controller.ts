@@ -1,11 +1,24 @@
 /* eslint-disable prettier/prettier */
 import type { HttpContext } from '@adonisjs/core/http'
+import announcement from '../models/announcement.js';
+import user from '../models/user.js';
+import shop from '../models/shop.js';
+
+const Announcement = announcement;
+const User = user;
+const Shop = shop;
 
 export default class DashboardController {
     async index({ inertia }: HttpContext) {
+       const announcements = await Announcement.find();
+       const users = await User.find();
+       const shops = await Shop.find();
+
         const data = {
-          recentOrders: [], // Récupérer depuis la base de données
-          statistics: {}    // Calculer les stats
+          announcements: announcements, // Récupérer depuis la base de données
+          users: users,
+          shops: shops,
+          stats: {}    // Calculer les stats
         };
         return inertia.render('dashboard/index', data);
       }
