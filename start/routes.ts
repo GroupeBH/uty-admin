@@ -17,5 +17,5 @@ router.get('/users/:id', '#controllers/users_controller.show')
 router.put('/users/:id', '#controllers/users_controller.update')
 router.delete('/users/:id', '#controllers/users_controller.destroy')
 
-router.get('/dashboard', '#controllers/dashboard_controller.index')
+router.get('/admin', '#controllers/dashboard_controller.index')
 router.get('/admin/customers', '#controllers/customers/views_controller.index')
