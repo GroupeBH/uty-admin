@@ -1,5 +1,8 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import Category from '../../models/category.js'
+import category from '../../models/category.js'
+import Subcategory from '#models/subcategory'
+
+const Category = category
 
 export default class ViewsController {
   /**
@@ -10,16 +13,21 @@ export default class ViewsController {
 
     const data = {
       categories: categories,
-      columns: [{ name: 'ID' }, { name: 'Name' }, { name: 'Description' }, { name: 'Actions' }],
     }
-    return inertia.render('categories/index', { data })
+    return inertia.render('categories/index', data)
   }
 
   /**
    * Display form to create a new record
    */
   async create({ inertia }: HttpContext) {
-    return inertia.render('categories/create')
+    const subcategories = await Subcategory.find()
+
+    const data = {
+      subcategories: subcategories,
+    }
+
+    return inertia.render('categories/create', data)
   }
 
   /**
@@ -32,8 +40,14 @@ export default class ViewsController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {
-    console.log(params)
+  async show({ params, inertia }: HttpContext) {
+    const thiscategory = await Category.findOne({ _id: params.id }).populate('subcategories')
+    const subcategories = await Subcategory.find()
+
+    return inertia.render('categories/show', {
+      category: thiscategory,
+      subcategories: subcategories,
+    })
   }
 
   /**

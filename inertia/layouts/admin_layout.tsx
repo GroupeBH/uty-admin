@@ -5,11 +5,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const { url } = usePage()
 
   const menuItems = [
-    { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
+    { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
     { icon: ShoppingBag, label: 'Commandes', path: '/admin/orders' },
     { icon: Users, label: 'Clients', path: '/admin/customers' },
     { icon: Package, label: 'Produits', path: '/admin/products' },
-    { icon: Settings, label: 'Paramètres', path: '/admin/settings' },
+    { icon: Settings, label: 'Catégories', path: '/admin/categories' },
+    { icon: Settings, label: 'Dévises utilisables', path: '/admin/currencies' },
   ]
 
   return (

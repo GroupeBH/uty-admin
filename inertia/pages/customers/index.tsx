@@ -37,7 +37,7 @@ const columns = [
 
 export default function index({ users }: any) {
     const customers = users
-    console.log(customers)
+    console.log(customers?.length)
     return (
       <AdminLayout>
         <div className="max-w-7xl mx-auto">
@@ -69,8 +69,8 @@ export default function index({ users }: any) {
                   </thead>
                   <tbody>
                     {customers?.map((customer: any) => (
-                      <tr key={customer.id} className="border-b last:border-b-0">
-                        <td className="py-4 pl-4 md:pl-0">#{customer?._id}</td>
+                      <tr key={customer?._id?.toString()} className="border-b last:border-b-0">
+                        <td className="py-4 pl-4 md:pl-0">#{customer?.phone}</td>
                         <td className="py-4 whitespace-nowrap">{customer?.username}</td>
                         <td className="py-4 whitespace-nowrap">{customer?.email}</td>
                         {/* <td className="py-4">{customer.orders}</td>

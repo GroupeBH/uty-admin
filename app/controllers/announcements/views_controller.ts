@@ -9,7 +9,7 @@ export default class ViewsController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {
+  async index({ inertia }: HttpContext) {
     const announcements = await Announcement.find()
   }
 

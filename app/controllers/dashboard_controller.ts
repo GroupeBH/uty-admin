@@ -15,10 +15,10 @@ export default class DashboardController {
        const shops = await Shop.find();
 
         const data = {
-          announcements: announcements, // Récupérer depuis la base de données
+          announcements: announcements,
           users: users,
           shops: shops,
-          stats: {}    // Calculer les stats
+          stats: {},
         };
         return inertia.render('dashboard/index', data);
       }
